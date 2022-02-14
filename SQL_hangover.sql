@@ -32,16 +32,7 @@ select * from house_price_data;
 
 -- SET GLOBAL local_infile = 1;
 
-#LOAD DATA LOCAL INFILE "C:/Users/Sergi/OneDrive/Documents/GitHub/hangover/regression_data.csv" INTO TABLE house_price_data;
 
--- LOAD DATA INFILE 'C:\Users\Sergi\OneDrive\Documents\GitHub\hangover\regression_data.csv' 
--- INTO TABLE house_price_data 
--- FIELDS TERMINATED BY ',' 
--- ENCLOSED BY '"'
--- LINES TERMINATED BY '\n'
--- IGNORE 1 ROWS;
-
--- SHOW VARIABLES LIKE "secure_file_priv";
 
 
 
