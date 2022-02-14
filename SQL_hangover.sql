@@ -24,7 +24,7 @@ sqft_living15 int,
 sqft_lot15 int,
 price int);
 
-select* from house_price_data;
+select * from house_price_data;
 
 -- UPDATE house_price_data SET date = STR_TO_DATE(date, '%d-%m-%Y')
 
