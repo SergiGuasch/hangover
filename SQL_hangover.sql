@@ -26,7 +26,63 @@ price int);
 
 select * from house_price_data;
 
--- UPDATE house_price_data SET date = STR_TO_DATE(date, '%d-%m-%Y')
+# Use the alter table command to drop the column date from the database, as we would not use it in the analysis with SQL. 
+# Select all the data from the table to verify if the command worked. Limit your returned results to 10.
+
+alter table house_price_data drop if exists column grade ; 
+
+# Use sql query to find how many rows of data you have.
+
+select count(*) from house_price_data;
+
+# Now we will try to find the unique values in some of the categorical columns:
+
+# What are the unique values in the column bedrooms?
+
+select count(distinct(bedrooms)) from house_price_data ;
+
+# What are the unique values in the column bathrooms?
+
+select count(distinct(bathrooms)) from house_price_data ;
+
+# What are the unique values in the column floors?
+
+select count(distinct(floors)) from house_price_data ;
+
+# What are the unique values in the column condition?
+
+select count(distinct(cond)) from house_price_data ;
+
+# What are the unique values in the column grade?
+
+select count(distinct(grade)) from house_price_data ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # SHOW VARIABLES LIKE 'local_infile'; -- This query would show you the status of the variable ‘local_infile’. If it is off, use the next command, otherwise you should be good to go
 
