@@ -24,7 +24,7 @@ sqft_living15 int,
 sqft_lot15 int,
 price int);
 
-LOAD DATA INFILE 'c:/tmp/discounts.csv' 
+LOAD DATA INFILE 'C:/Users/Sergi/OneDrive/Documents/GitHub/hangover/regression_data.csv' 
 INTO TABLE discounts 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
