@@ -24,13 +24,20 @@ sqft_living15 int,
 sqft_lot15 int,
 price int);
 
-LOAD DATA INFILE 'C:/Users/Sergi/OneDrive/Documents/GitHub/hangover/regression_data.csv' 
-INTO TABLE discounts 
+SHOW VARIABLES LIKE 'local_infile'; -- This query would show you the status of the variable ‘local_infile’. If it is off, use the next command, otherwise you should be good to go
+
+SET GLOBAL local_infile = 1;
+
+#LOAD DATA LOCAL INFILE "C:/Users/Sergi/OneDrive/Documents/GitHub/hangover/regression_data.csv" INTO TABLE house_price_data;
+
+LOAD DATA INFILE 'C:\Users\Sergi\OneDrive\Documents\GitHub\hangover\regression_data.csv' 
+INTO TABLE house_price_data 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-SHOW VARIABLES LIKE 'local_infile'; -- This query would show you the status of the variable ‘local_infile’. If it is off, use the next command, otherwise you should be good to go
+SHOW VARIABLES LIKE "secure_file_priv";
 
-SET GLOBAL local_infile = 1;
+
+
