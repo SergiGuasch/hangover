@@ -88,6 +88,7 @@ select waterfront, avg(price) as avg_group_price_wf from house_price_data group 
     
 select cond, grade from house_price_data group by cond order by grade, cond; 
 select cond, grade from house_price_data group by grade order by cond, grade;
+# Visually, it seems there's no kind of correlation .
 
 # One of the customers is only interested in the following houses:
 	-- 	Number of bedrooms either 3 or 4
