@@ -133,8 +133,8 @@ cond>=3 and
 grade>=5 and
 price<300000;
 
-#Your manager wants to find out the list of properties whose prices are twice more than the average of all the properties in the database. 
-#Write a query to show them the list of such properties. You might need to use a sub query for this problem.    
+# Your manager wants to find out the list of properties whose prices are twice more than the average of all the properties in the database. 
+# Write a query to show them the list of such properties. You might need to use a sub query for this problem.    
 
 SELECT id, price, (SELECT AVG(price) AS avgPrice
     FROM house_price_data) as AVG_price
@@ -146,12 +146,36 @@ WHERE (price/2)>
 
 # Since this is something that the senior management is regularly interested in, create a view of the same query.
 
+CREATE VIEW view_double_price AS
+SELECT id, price, (SELECT AVG(price) AS avgPrice
+    FROM house_price_data) as AVG_price
+FROM house_price_data
+WHERE (price/2)>
+  (SELECT AVG(price) AS avgPrice
+    FROM house_price_data
+  );
+  
+# Most customers are interested in properties with three or four bedrooms. What is the difference in average prices of 
+# the properties with three and four bedrooms?
 
+select distinct (select avg(price) from house_price_data where bedrooms= 4) as avg_4, 
+(select avg(price) from house_price_data where bedrooms= 3) as avg_3, 
+(select avg(price) from house_price_data where bedrooms= 4)-(select avg(price) from house_price_data where bedrooms= 3) as avg_diff
+from house_price_data;
 
+# What are the different locations where properties are available in your database? (distinct zip codes)
 
+select distinct zipcode from house_price_data;
 
+# Show the list of all the properties that were renovated.
 
+select id, yr_renovated, price from house_price_data where yr_renovated != 0 order by yr_renovated;
 
+# Provide the details of the property that is the 11th most expensive property in your database.
+
+-- select * from house_price_data order by price desc limit 11;
+
+select * from ( select * from house_price_data order by price desc limit 11) as 11th_expensive order by price asc limit 1;
 
 
 
