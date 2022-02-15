@@ -91,34 +91,60 @@ select cond, grade from house_price_data group by grade order by cond, grade;
 
 # One of the customers is only interested in the following houses:
 	-- 	Number of bedrooms either 3 or 4
-    
+select id, bedrooms, price from house_price_data where bedrooms= 3 or bedrooms=4 order by bedrooms, price;
 
     
 	-- 	Bathrooms more than 3
     
+select id, bathrooms, price from house_price_data where bathrooms>3 order by bathrooms, price;    
     
     
 	-- 	One Floor
     
+select id, floors, price from house_price_data where floors>1 order by floors, price;    
     
     
 	-- 	No waterfront
     
+select id, waterfront, price from house_price_data where waterfront=0 order by waterfront, price;    
     
     
 	-- 	Condition should be 3 at least
     
-    
+select id, cond, price from house_price_data where cond>=3 order by cond, price;    
     
 	-- 	Grade should be 5 at least
     
+select id, grade, price from house_price_data where grade>=5 order by grade, price;    
     
     
 	-- 	Price less than 300000
     
+select id,price, grade from house_price_data where price<300000 order by price, grade;    
     
+    -- All together 
     
+select id, price, grade, cond, waterfront, floors, bathrooms, bedrooms from house_price_data 
+where (bedrooms= 3 or bedrooms=4) and 
+bathrooms>3 and 
+floors>1 and 
+waterfront=0 and 
+cond>=3 and 
+grade>=5 and
+price<300000;
 
+#Your manager wants to find out the list of properties whose prices are twice more than the average of all the properties in the database. 
+#Write a query to show them the list of such properties. You might need to use a sub query for this problem.    
+
+SELECT id, price, (SELECT AVG(price) AS avgPrice
+    FROM house_price_data) as AVG_price
+FROM house_price_data
+WHERE (price/2)>
+  (SELECT AVG(price) AS avgPrice
+    FROM house_price_data
+  );
+
+# Since this is something that the senior management is regularly interested in, create a view of the same query.
 
 
 
