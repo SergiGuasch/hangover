@@ -69,7 +69,8 @@ Another of the attempts to improve our model has been to scale the numerical dat
 ## 6.  MODEL 2 - Setting distance to center as dummie and not dummyfiyng all the zipcodes
 In our second model, we tried to think a way of improving the score we obtained on our previous models. As we commented before, one of the main issues in our previous model was dealing with some many subsamples due to the dummification of the zipcode variables. We therefore, tried to reduce the number of subsamples by some kind of aggrupation that had more observations for each subsample. That's why we decided to divide the zipcodes in 5 groups depending how far away were they from the most expensive area (best place to live). It appeared to be a clear pattern that the distance to this point would mean less value of the house (less services, more distance to business area...). That's why we created the distance_to_center column. For the rest of the model, we just follow the same steps as before. However, probably due to the fact that our election of zipcodes group were arbitrary, we didn't manage to find a better performing model.
  
-FOTO MODEL, ACCURANCY 
+![Model2](https://github.com/SergiGuasch/hangover/blob/main/7_model2.jpg)  
+*Fig 7. Results of model 2*
  
  ## Limitations of our model: 
  
