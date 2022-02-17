@@ -14,7 +14,7 @@ The database is composed of 21,597 rows (each representing a house in the King C
 ![Data_distribution](https://github.com/SergiGuasch/hangover/blob/main/images/1_Data_distribution.jpg)  
 *Fig 1. Data distribution by zipcode*
 
-## 2. Data Cleaning & Standarization
+## 2 Data Cleaning & Standarization
 ### 2.1. Checking Null values
 Our first step was to try to find the null values. The dataset doesn't have any null values so we don't have to deal with them. However, it is important to think about the reason why these nulls do not exist, since this can introduce some kind of bias in the data. We have to observe if data may have been duplicated to avoid nulls, if random values have been incorporated...
 
@@ -63,17 +63,17 @@ In order to try to improve the performance of our model, we have tried to use ot
 ![Other_models](https://github.com/SergiGuasch/hangover/blob/main/images/6_other_models.jpg)  
 *Fig 6. Testing other models*
 
-## 5. Scaling numerical variables
+## 5 Scaling numerical variables
 Another of the attempts to improve our model has been to scale the numerical data. For it, we used the maxmin_scaler, the st_scaler and the rob_scaler. However, we can't appreciaate a remarkable difference.
  
  
-## 6.  MODEL 2 - Setting distance to center as dummie and not dummyfiyng all the zipcodes
+## 6  MODEL 2 - Setting distance to center as dummie and not dummyfiyng all the zipcodes
 In our second model, we tried to think a way of improving the score we obtained on our previous models. As we commented before, one of the main issues in our previous model was dealing with some many subsamples due to the dummification of the zipcode variables. We therefore, tried to reduce the number of subsamples by some kind of aggrupation that had more observations for each subsample. That's why we decided to divide the zipcodes in 5 groups depending how far away were they from the most expensive area (best place to live). It appeared to be a clear pattern that the distance to this point would mean less value of the house (less services, more distance to business area...). That's why we created the distance_to_center column. For the rest of the model, we just follow the same steps as before. However, probably due to the fact that our election of zipcodes group were arbitrary, we didn't manage to find a better performing model.
  
 ![Model2](https://github.com/SergiGuasch/hangover/blob/main/images/7_model2.jpg)  
 *Fig 7. Results of model 2*
  
- ## Limitations of our model: 
+ ## 7 Limitations of our model: 
  
  The main limitation of our model, as we have been introducing throughout the paper is the excess of variables we had. This harms the model in many different ways. Some are:
 
