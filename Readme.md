@@ -8,9 +8,10 @@ by [Marc Puyol](https://github.com/MpiPuin12/Marc-Puyol-Iniesta) &  [Sergi Guasc
 <br/><br/>
 
 ## 1 Importing and understanding the data
-The database is composed of 21,597 rows (each representing a house) and 21 columns. Additionally, we have added two new columns, one that reflects the year in which the house was built or reformed and one that reflects the distance from the center (the most expensive area).
+The database is composed of 21,597 rows (each representing a house in the King County in Washington state) and 21 columns. Additionally, we have added two new columns, one that reflects the year in which the house was built or reformed and one that reflects the distance from the center (the most expensive area).
 
-Foto de Mapa de tableau per veure aprox las casas?
+![Data_distribution](https://github.com/SergiGuasch/hangover/blob/main/1_Data_distribution.jpg)  
+*Fig 1. Data distribution by zipcode*
 
 ## 2. Data Cleaning & Standarization
 ### 2.1. Checking Null values
@@ -20,6 +21,8 @@ Our first step was to try to find the null values. The dataset doesn't have any 
 Our approach to finding duplicates values was first of all checking the reason why a same id was repeated. Due to the fact that we only had data from 2014 and 2015, probably the only reason why a house may be repeated it's because it was sold two times in this period and, therefore, two different prices (but the independent variables remained the same.) That's why we decided to only keep the last date transaction info since it's the one that recaps better the actual price of that house.
 
 FOTO
+![Data_distribution](https://github.com/SergiGuasch/hangover/blob/main/1_Data_distribution.jpg)  
+*Fig 1. Data distribution by zipcode*
 
 ## 3  Pre-processing 
 ### 3.1  Checking data types
