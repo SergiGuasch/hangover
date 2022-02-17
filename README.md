@@ -53,8 +53,8 @@ The first model we tried was the linear regression model. We obtained an R2 of 0
 ### 4.3 Trying feature selection to simplify our model
 As we have already mentioned, the problem with our model was that it had too many variables. That is why, in order to try to reduce this problem, we have tried some kind of feature selection model that allows us to drop the variables that contribute the least to the model. By doing this, we may save some time and computing cost. If from the 95 original variables we shrink to 45(the most important for the model) we only lose 0.1 od the R2 score. The code used was the following.
 
-FOTO CODING
-FOTO ACCURANCY WITH 95 VARIABLES AND WITH 45.
+![Code](https://github.com/SergiGuasch/hangover/blob/main/5_code.jpg)  
+*Fig 5. Feature selection code*
 
 ### 4.4 Testing other models
 In order to try to improve the performance of our model, we have tried to use other models that could be better adjusted to the characteristics of the database we were working with. The models we tried were ('RandomForestRegressor', 'KNeighborsRegressor','GradientBoostingRegressor', 'linear_model', 'tree_Regressor'). After testing these models, both the RandomForestRegressor and GradientBoostingRegressor, are slightly better than the LinearRegressionModel.
