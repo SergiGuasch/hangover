@@ -20,9 +20,8 @@ Our first step was to try to find the null values. The dataset doesn't have any 
 ### 2.1. Checking for duplicated Values
 Our approach to finding duplicates values was first of all checking the reason why a same id was repeated. Due to the fact that we only had data from 2014 and 2015, probably the only reason why a house may be repeated it's because it was sold two times in this period and, therefore, two different prices (but the independent variables remained the same.) That's why we decided to only keep the last date transaction info since it's the one that recaps better the actual price of that house.
 
-FOTO
-![Data_distribution](https://github.com/SergiGuasch/hangover/blob/main/1_Data_distribution.jpg)  
-*Fig 1. Data distribution by zipcode*
+![Duplicates](https://github.com/SergiGuasch/hangover/blob/main/2_duplicates.jpg)  
+*Fig 2. Rows duplicates by Id*
 
 ## 3  Pre-processing 
 ### 3.1  Checking data types
