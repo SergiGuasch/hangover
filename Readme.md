@@ -59,7 +59,8 @@ As we have already mentioned, the problem with our model was that it had too man
 ### 4.4 Testing other models
 In order to try to improve the performance of our model, we have tried to use other models that could be better adjusted to the characteristics of the database we were working with. The models we tried were ('RandomForestRegressor', 'KNeighborsRegressor','GradientBoostingRegressor', 'linear_model', 'tree_Regressor'). After testing these models, both the RandomForestRegressor and GradientBoostingRegressor, are slightly better than the LinearRegressionModel.
 
-FOTO CODI/RESULTS
+![Other_models](https://github.com/SergiGuasch/hangover/blob/main/6_other_models.jpg)  
+*Fig 6. Testing other models*
 
 ## 5. Scaling numerical variables
 Another of the attempts to improve our model has been to scale the numerical data. For it, we used the maxmin_scaler, the st_scaler and the rob_scaler. However, we can't appreciaate a remarkable difference.
