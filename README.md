@@ -36,7 +36,8 @@ We first plot all the graphs to try to detect clear outliers. At first sight, mo
 ### 3.3  Check useless columns
 For checking which columns should we add to our model, we run both the correlation matrix and the scatter_matrix so that we could check for multicollinearity, which were the variables more related to the price... After observing the scatter_matrix, and observing that the sqft_living behaved as a kind of normal distribution we decided to deal with it's outliers by droping the values away from it's mean and 3 std. deviations. For the numeric variables, we introduce to the model sqft_living and sqft_basement. The reason for the first (sqft_living) is that is the variable more correlated with the target and it's very correlated with another numeric variable (sqft_above) that we drop to avoid multicollinearity. Regarding sqft_basement, is not as correlated to sqft_living so we'll live it in the model.
 
-FOTO HEATMAP MATRIX
+![Heatmap](https://github.com/SergiGuasch/hangover/blob/main/Heatmap.jpg)  
+*Fig 4. Heatmap of numerical variables*
 
 ### 3.4 Dealing with the categorical variables
 As we commented before, we added a categorical variable (Decade build) that shows whether the date it was built or the date it was renovated. We afterwards group them by decades. Another step, it was dummifying all our categorical variables. This was one of the main limitations of the model. When dummifying the zipcode, we created a lot of little subsamples that may not have many observations and therefore drive us to error. This problem gets bigger when we drop some outliers that may reduce even more the size of our subsamples.
