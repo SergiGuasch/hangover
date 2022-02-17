@@ -48,7 +48,15 @@ In order to try to improve the performance of our model, we have tried to use ot
  
  
  
- ## Limitati
+ 
+ 
+ ## Limitations of our model: 
+ 
+ The main limitation of our model, as we have been introducing throughout the paper is the excess of variables that we present. This harms us in many different ways. Some are:
+
+- Computational cost and time to run the model (in huge databases it would be unfeasible)
+- Since we create so many subsamples within our own subsamples, we have not very large subsamples, which also limits our ability to deal with outliers and a priori irrelevant data. 
+
   
 
 
