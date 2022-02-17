@@ -10,7 +10,7 @@ by [Marc Puyol](https://github.com/MpiPuin12/Marc-Puyol-Iniesta) &  [Sergi Guasc
 ## 1 Importing and understanding the data
 The database is composed of 21,597 rows (each representing a house in the King County in Washington state) and 21 columns. Additionally, we have added two new columns, one that reflects the year in which the house was built or reformed and one that reflects the distance from the center (the most expensive area).
 
-![Data_distribution](https://github.com/SergiGuasch/hangover/blob/main/1_Data_distribution.jpg)  
+![Data_distribution](https://github.com/SergiGuasch/hangover/blob/main/images/1_Data_distribution.jpg)  
 *Fig 1. Data distribution by zipcode*
 
 ## 2. Data Cleaning & Standarization
@@ -20,7 +20,7 @@ Our first step was to try to find the null values. The dataset doesn't have any 
 ### 2.1. Checking for duplicated Values
 Our approach to finding duplicates values was first of all checking the reason why a same id was repeated. Due to the fact that we only had data from 2014 and 2015, probably the only reason why a house may be repeated it's because it was sold two times in this period and, therefore, two different prices (but the independent variables remained the same.) That's why we decided to only keep the last date transaction info since it's the one that recaps better the actual price of that house.
 
-![Duplicates](https://github.com/SergiGuasch/hangover/blob/main/2_duplicates.jpg)  
+![Duplicates](https://github.com/SergiGuasch/hangover/blob/main/images/2_duplicates.jpg)  
 *Fig 2. Rows duplicates by Id*
 
 ## 3  Pre-processing 
@@ -30,13 +30,13 @@ We first thought of converting the bathrooms to an integer but since it can also
 ### 3.2  Checking data shapes
 We first plot all the graphs to try to detect clear outliers. At first sight, most of the numerical columns( sqft_living, sqft_living15, sqft_lot, sqft_lot15, sqft_above, sqft_basement) seem to have some outliers but we'll get deeper into it by plotting also the scatterplot. For the categorical variables such as bedrooms, we'll deal with non-sense outliers such as 33 and 11 bedrooms(not consistent with the rest of the attributes of the house). For the 33 bedrooms house, we'll treat it as a typo and interpret it as 3.
 
-![Scatterplots](https://github.com/SergiGuasch/hangover/blob/main/3_scatterplots.jpg)  
+![Scatterplots](https://github.com/SergiGuasch/hangover/blob/main/images/3_scatterplots.jpg)  
 *Fig 3. Scatterplots of numerical variables*
 
 ### 3.3  Check useless columns
 For checking which columns should we add to our model, we run both the correlation matrix and the scatter_matrix so that we could check for multicollinearity, which were the variables more related to the price... After observing the scatter_matrix, and observing that the sqft_living behaved as a kind of normal distribution we decided to deal with it's outliers by droping the values away from it's mean and 3 std. deviations. For the numeric variables, we introduce to the model sqft_living and sqft_basement. The reason for the first (sqft_living) is that is the variable more correlated with the target and it's very correlated with another numeric variable (sqft_above) that we drop to avoid multicollinearity. Regarding sqft_basement, is not as correlated to sqft_living so we'll live it in the model.
 
-![Heatmap](https://github.com/SergiGuasch/hangover/blob/main/4_Heatmap.jpg)  
+![Heatmap](https://github.com/SergiGuasch/hangover/blob/main/images/4_Heatmap.jpg)  
 *Fig 4. Heatmap of numerical variables*
 
 ### 3.4 Dealing with the categorical variables
@@ -53,13 +53,13 @@ The first model we tried was the linear regression model. We obtained an R2 of 0
 ### 4.3 Trying feature selection to simplify our model
 As we have already mentioned, the problem with our model was that it had too many variables. That is why, in order to try to reduce this problem, we have tried some kind of feature selection model that allows us to drop the variables that contribute the least to the model. By doing this, we may save some time and computing cost. If from the 95 original variables we shrink to 45(the most important for the model) we only lose 0.1 od the R2 score. The code used was the following.
 
-![Code](https://github.com/SergiGuasch/hangover/blob/main/5_code.jpg)  
+![Code](https://github.com/SergiGuasch/hangover/blob/main/images/5_code.jpg)  
 *Fig 5. Feature selection code*
 
 ### 4.4 Testing other models
 In order to try to improve the performance of our model, we have tried to use other models that could be better adjusted to the characteristics of the database we were working with. The models we tried were ('RandomForestRegressor', 'KNeighborsRegressor','GradientBoostingRegressor', 'linear_model', 'tree_Regressor'). After testing these models, both the RandomForestRegressor and GradientBoostingRegressor, are slightly better than the LinearRegressionModel.
 
-![Other_models](https://github.com/SergiGuasch/hangover/blob/main/6_other_models.jpg)  
+![Other_models](https://github.com/SergiGuasch/hangover/blob/main/images/6_other_models.jpg)  
 *Fig 6. Testing other models*
 
 ## 5. Scaling numerical variables
@@ -69,7 +69,7 @@ Another of the attempts to improve our model has been to scale the numerical dat
 ## 6.  MODEL 2 - Setting distance to center as dummie and not dummyfiyng all the zipcodes
 In our second model, we tried to think a way of improving the score we obtained on our previous models. As we commented before, one of the main issues in our previous model was dealing with some many subsamples due to the dummification of the zipcode variables. We therefore, tried to reduce the number of subsamples by some kind of aggrupation that had more observations for each subsample. That's why we decided to divide the zipcodes in 5 groups depending how far away were they from the most expensive area (best place to live). It appeared to be a clear pattern that the distance to this point would mean less value of the house (less services, more distance to business area...). That's why we created the distance_to_center column. For the rest of the model, we just follow the same steps as before. However, probably due to the fact that our election of zipcodes group were arbitrary, we didn't manage to find a better performing model.
  
-![Model2](https://github.com/SergiGuasch/hangover/blob/main/7_model2.jpg)  
+![Model2](https://github.com/SergiGuasch/hangover/blob/main/images/7_model2.jpg)  
 *Fig 7. Results of model 2*
  
  ## Limitations of our model: 
