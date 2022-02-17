@@ -1,4 +1,5 @@
 ![Ironhack](https://github.com/SergiGuasch/sergiguasch/blob/main/labs/week4/Lab2/Ironhack.jpg)  
+# Mid bootcamp project  
 
 -------
 
