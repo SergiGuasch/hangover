@@ -12,7 +12,7 @@ by [Marc Puyol](https://github.com/MpiPuin12/Marc-Puyol-Iniesta) &  [Sergi Guasc
 The database is composed of 21,597 rows (each representing a house in the King County in Washington state) and 21 columns. Additionally, we have added two new columns, one that reflects the year in which the house was built or reformed and one that reflects the distance from the center (the most expensive area).
 
 ![Data_distribution](https://github.com/SergiGuasch/hangover/blob/main/images/1_Data_distribution.jpg)  
-*Fig 1. Data distribution by zipcode*
+*Fig 1. Data distribution in King County by zipcode*
 
 ## 2 Data Cleaning & Standarization
 ### 2.1. Checking Null values
@@ -29,7 +29,7 @@ Our approach to finding duplicates values was first of all checking the reason w
 We first thought of converting the bathrooms to an integer but since it can also take decimals values we decided to leave it as a float. However, we did convert floors into an integer.
 
 ### 3.2  Checking data shapes
-We first plot all the graphs to try to detect clear outliers. At first sight, most of the numerical columns( sqft_living, sqft_living15, sqft_lot, sqft_lot15, sqft_above, sqft_basement) seem to have some outliers but we'll get deeper into it by plotting also the scatterplot. For the categorical variables such as bedrooms, we'll deal with non-sense outliers such as 33 and 11 bedrooms(not consistent with the rest of the attributes of the house). For the 33 bedrooms house, we'll treat it as a typo and interpret it as 3.
+We first plot all the graphs to try to detect clear outliers. At first sight, most of the numerical columns(sqft_living, sqft_living15, sqft_lot, sqft_lot15, sqft_above, sqft_basement) seem to have some outliers. For the sqft_living variables, since it behaves as a kind of normal distribution, we decided to drop the outliers that were outside the range of 3 standard deviations. For the sqft_lot, we drop all the values that were greater than 8-hundred thousand. For both variables we tried to make a log transformation to avoid the skewness of the model but it didn't contribute to the success of the model. We also see a clear correlation between sqft_living and sqft_above so we may only include one of the two in the model.  Regarding the categorical variables such as bedrooms, we'll deal with non-sense outliers such as 33 and 11 bedrooms(not consistent with the rest of the attributes of the house). For the 33 bedrooms house, we'll treat it as a typo and interpret it as 3.
 
 ![Scatterplots](https://github.com/SergiGuasch/hangover/blob/main/images/3_scatterplots.jpg)  
 *Fig 3. Scatterplots of numerical variables*
