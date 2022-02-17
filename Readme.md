@@ -1,5 +1,9 @@
+![Ironhack](https://github.com/SergiGuasch/sergiguasch/blob/main/labs/week4/Lab2/Ironhack.jpg)  
+
+-------
+
 # Case Study: Regression/ Predicting the price of houses :moneybag: :euro: :house:
-by Marc Puyol & Sergi Guasch, February 2022
+by [Marc Puyol](https://github.com/MpiPuin12/Marc-Puyol-Iniesta) &  [Sergi Guasch](https://github.com/SergiGuasch/sergiguasch), February 2022
 <br/><br/>
 
 ## 1 Importing and understanding the data
