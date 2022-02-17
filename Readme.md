@@ -1,6 +1,6 @@
 # Case Study: Regression/ Predicting the price of houses
 
-##1 Importing and understanding the data
+## 1 Importing and understanding the data
 ## 2. Data Cleaning & Standarization
 ### 2.1. Checking Null values
 Our first step was to try to find the null values. The dataset doesn't have any null values so we don't have to deal with them. However, it is important to think about the reason why these nulls do not exist, since this can introduce some kind of bias in the data. We have to observe if data may have been duplicated to avoid nulls, if random values have been incorporated...
