@@ -1,12 +1,16 @@
 # Case Study: Regression/ Predicting the price of houses
 
 ## 1 Importing and understanding the data
+The database is composed of 21,597 rows (each representing a house) and 21 columns. Additionally, we have added two new columns, one that reflects the year in which the house was built or reformed (for the houses that were not reformed we have taken the year of construction and for those that were reformed the year of reform) and one that reflects the distance from the center (the most expensive area).
+
+Foto de Mapa de tableau per veure aprox las casas?
+
 ## 2. Data Cleaning & Standarization
 ### 2.1. Checking Null values
 Our first step was to try to find the null values. The dataset doesn't have any null values so we don't have to deal with them. However, it is important to think about the reason why these nulls do not exist, since this can introduce some kind of bias in the data. We have to observe if data may have been duplicated to avoid nulls, if random values have been incorporated...
 
 ### 2.1. Checking for duplicated Values
-Our approach to finding null values was first of all checking the reason why a same id was repeated. Due to the fact that we only had data from 2014 and 2015, probably the only reason why a house may be repeated it's because it was sold two times in this period and, therefore, two different prices (but the independent variables remained the same.) That's why we decided to only keep the last date transaction info since it's the one that recaps better the actual price of that home.
+Our approach to finding duplicates values was first of all checking the reason why a same id was repeated. Due to the fact that we only had data from 2014 and 2015, probably the only reason why a house may be repeated it's because it was sold two times in this period and, therefore, two different prices (but the independent variables remained the same.) That's why we decided to only keep the last date transaction info since it's the one that recaps better the actual price of that home.
 
 ## 3  Pre-processing 
 ### 3.1  Checking data types
@@ -28,6 +32,25 @@ As we commented before, we added a categorical variable(Decade build) that shows
 ### 4.1  Train test split
 Once all the engineering and the pre-processing is finished, we, as usual run and test our model
 
-#### 4.2  Linear regression model
+### 4.2  Linear regression model
+The first model we tried was the linear regression model. The first R2 we obtained was 0.8093656334057242.
+
+### 4.3 Trying feature selection to simplify our model
+As we have already mentioned, the problem with our model was that it had too many variables. That is why, in order to try to reduce this problem, we have tried  some kind of feature selection model that allows us to drop the variables that contribute the least to the model. By doing this, we may save some time and computing cost. The code used was the following. 
+
+### 4.4 Testing other models
+In order to try to improve the performance of our model, we have tried to use other models that could be better adjusted to the characteristics the database we were  working with had. The models we tried were ('RandomForestRegressor', 'KNeighborsRegressor','GradientBoostingRegressor', 'linear_model', 'tree_Regressor'). However, the linear_model was still the best performance model with very similar results than the GradientBoostingRegressor model. 
+
+## 5. Scaling numerical variables
+ Another of the attempts to improve our model has been to scale the numerical data. For it, we used the maxmin_scaler, the st_scaler and the rob_scaler.
+ 
+ 
+ 
+ 
+ 
+ ## Limitati
+  
+
+
 
 
