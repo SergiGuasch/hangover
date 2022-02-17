@@ -30,7 +30,8 @@ We first thought of converting the bathrooms to an integer but since it can also
 ### 3.2  Checking data shapes
 We first plot all the graphs to try to detect clear outliers. At first sight, most of the numerical columns( sqft_living, sqft_living15, sqft_lot, sqft_lot15, sqft_above, sqft_basement) seem to have some outliers but we'll get deeper into it by plotting also the scatterplot. For the categorical variables such as bedrooms, we'll deal with non-sense outliers such as 33 and 11 bedrooms(not consistent with the rest of the attributes of the house). For the 33 bedrooms house, we'll treat it as a typo and interpret it as 3.
 
-FOTO SCATTERPLOTS
+![Scatterplots](https://github.com/SergiGuasch/hangover/blob/main/3_scatterplots.jpg)  
+*Fig 3. Scatterplots of numerical variables*
 
 ### 3.3  Check useless columns
 For checking which columns should we add to our model, we run both the correlation matrix and the scatter_matrix so that we could check for multicollinearity, which were the variables more related to the price... After observing the scatter_matrix, and observing that the sqft_living behaved as a kind of normal distribution we decided to deal with it's outliers by droping the values away from it's mean and 3 std. deviations. For the numeric variables, we introduce to the model sqft_living and sqft_basement. The reason for the first (sqft_living) is that is the variable more correlated with the target and it's very correlated with another numeric variable (sqft_above) that we drop to avoid multicollinearity. Regarding sqft_basement, is not as correlated to sqft_living so we'll live it in the model.
