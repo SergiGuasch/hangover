@@ -1,4 +1,6 @@
-# Case Study: Regression/ Predicting the price of houses
+# Case Study: Regression/ Predicting the price of houses :moneybag: :euro: :house:
+by Marc Puyol & Sergi Guasch, February 2022
+<br/><br/>
 
 ## 1 Importing and understanding the data
 The database is composed of 21,597 rows (each representing a house) and 21 columns. Additionally, we have added two new columns, one that reflects the year in which the house was built or reformed (for the houses that were not reformed we have taken the year of construction and for those that were reformed the year of reform) and one that reflects the distance from the center (the most expensive area).
@@ -45,7 +47,9 @@ In order to try to improve the performance of our model, we have tried to use ot
  Another of the attempts to improve our model has been to scale the numerical data. For it, we used the maxmin_scaler, the st_scaler and the rob_scaler.
  
  
- 
+## 6.  MODEL 2 - Setting distance to center as dummie and not dummyfiyng all the zipcodes
+
+In our second model, we tried to think a way of improving the score we obtained on our previous model. As we commented before, one of the main issues in our previous model was deling with some many subsamples due to the dummification od the zipcode variable. We therefore, tried to reduce the number of subsamples by some kind of aggrupation that had more observations for each subsample. That's why we decided to divide the zipcodes in 5 groups depending how far away were they from the most expensive area(best place to live) since it appear to be a clear pattern that distance to this point would mean less value of the house (less services, more distance to business area...). That's why we created the distance_to_center column. For the rest of the model, we just follow the same steps as before
  
  
  
