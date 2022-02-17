@@ -8,29 +8,26 @@ Our first step was to try to find the null values. The dataset doesn't have any 
 ### 2.1. Checking for duplicated Values
 Our approach to finding null values was first of all checking the reason why a same id was repeated. Due to the fact that we only had data from 2014 and 2015, probably the only reason why a house may be repeated it's because it was sold two times in this period and, therefore, two different prices (but the independent variables remained the same.) That's why we decided to only keep the last date transaction info since it's the one that recaps better the actual price of that home.
 
-## 2.Building a model 
-### 2.1. Extracting the target and independent variables (and scaling them):
+## 3  Pre-processing 
+### 3.1  Checking data types
+We first thought of flooring the bathrooms to an integer but since it can also take decimals values we decided to leave it as a float. However, we did convert floors into an integer.
 
-We first of all extract the target variable (The churn Variable), we use y = (df.Churn == 'Yes').astype(int)so as to have the yes/no values as a numeric dummy variable . After, we extract the independent variables that we'll use for trying to predict the churn probability(tenure, SeniorCitizen, MonthlyCharge). For the these independent variables, due to the fact that all of them are numeric we don't need to separate by numerical and categorical and we can apply the scaling method
-to all of them at the same time. 
-![Test Image 1](https://github.com/MpiPuin12/Marc-Puyol-Iniesta/blob/main/Captura%20de%20pantalla%202022-02-11%20a%20las%209.47.08.png)
+### 3.2  Checking data shapes
+We first plot all the graphs to try to detect clear outliers. At first sight, most of the numerical columns( sqft_living, sqft_living15, sqft_lot, sqft_lot15, sqft_above, sqft_basement) seem to have some outliers but we'll get deeper into it by plotting also the scatterplot. For the categorical variables such as bedrooms, we'll deal with non-sense outliers such as 33 and 11 bedrooms(not consistent with the rest of the attributes of the house). For the 33 bedrooms house, we'll treat it as a typo and interpret it as 3.
 
-### 2.2. Setting the train and testing set: 
+### 3.3  Check useless columns
 
-#### 2.2.1. Logistic regression
+For checking which columns should we add to our model, we run both the correlation matrix and the scatter_matrix so that we could check for multicollinearity, which were the variables more related to the price... After observing the scatter_matrix, and observing that the sqft_living behaved as a kind of normal distribution we decided to deal with it's outliers by droping the values away from it's mean and 3 std. deviations. For the numeric variables, we introduce to the model sqft_living and sqft_basement. The reason for the first (sqft_living) is that is the variable more correlated with the target and it's very correlated with another numeric variable (sqft_above) that we drop to avoid multicollinearity. Regarding sqft_basement, is not as correlated to sqft_living so we'll live it in the model.
 
-After the scaling, I prepared the test and train sets by setting the test size as 0.25 and a Random_state of 33. By running the logistic regression, the acurracy score we obtain is accuracy_score(y_test, y_test_pred)= 0.7915956842703009. However, is very important to also plott the confusion matrix, specially to detect how many employees that ended up churning were not detected by the model. The total amount of this was 100 which represents a 15% of the predictions. 
+### 3.4 Dealing with the categorical variables
 
-![Test Image 1](https://github.com/MpiPuin12/Marc-Puyol-Iniesta/blob/main/Untitled%20Folder/Captura%20de%20pantalla%202022-02-11%20a%20las%2017.26.32.png)
+As we commented before, we added a categorical variable(Decade build) that shows wither the date it was build or the date it was renovated. We afterwards group them by decades. We afterwards dummified all our categorical variables. This was one of the main limitations of this model since when dummifying the zipcode we creat a lot of little subsamples, some of them with not many observations which can drive us to error. This problem gets bigger when we drop some outliers that may reduce even more the size of our subsamples.
 
-#### 2.2.2. Smote resampling
+## 4  Testing the model
 
-We can try to compensate the sample (the churn class is in clear minority) and see if this will improve the performance of our model. The first resampling method we used was the smote resampler. This consists on oversampling the minority class (in this case the churn set) so as to balance both classes. We afterwards run the same regression as before to see if this method improved the performance of the model. As to the acurrancy score, this moves downdars if we compare it with the previous model (now is 0.7533822960958639) and in the confusion matrix, this model also performs worse since the percentage of false negative (people we predicted not to churn who ended doing it) is higher(18% vs 15% before. The percentage of false positive is also higher.) 
+### 4.1  Train test split
+Once all the engineering and the pre-processing is finished, we, as usual run and test our model
 
-![Test Image 1](https://github.com/MpiPuin12/Marc-Puyol-Iniesta/blob/main/Untitled%20Folder/Captura%20de%20pantalla%202022-02-11%20a%20las%2017.26.19.png)
+#### 4.2  Linear regression model
 
-#### 2.2.2. Tomek resampling
 
-The second method used is tomek. This method consists in undersampling the minority class so that we kind of balance the data. Once resampled, we run the same regression as before to see if this method improved the performance of the model. In this case, the acurrancy score is practically the same as in the first model(and quite better than with the smote resampling) and the percentage of false negatives(again, the most important category) is the best of the three. 
-
-![Test Image 1](https://github.com/MpiPuin12/Marc-Puyol-Iniesta/blob/main/Untitled%20Folder/Captura%20de%20pantalla%202022-02-11%20a%20las%2017.26.45.png)
