@@ -6,7 +6,8 @@
 # Case Study: Regression/ Predicting the price of houses :moneybag: :euro: :house:
 by [Marc Puyol](https://github.com/MpiPuin12/Marc-Puyol-Iniesta) &  [Sergi Guasch](https://github.com/SergiGuasch/sergiguasch), February 2022
 <br/><br/>
- - **Code:** Jupyter Notebook - [Link to code folder](https://github.com/SergiGuasch/hangover/blob/main/Mid-project.ipynb)  
+ - **Code:** Jupyter Notebook - [Link to code folder](https://github.com/SergiGuasch/hangover/blob/main/Mid-project.ipynb) 
+ - **Tableau:** Tableau Link - [Link to Tableau file](https://public.tableau.com/app/profile/sergi4264/viz/Hangover_16448685754500/Dashboard1)
 
 ## 1 Importing and understanding the data
 The database is composed of 21,597 rows (each representing a house in the King County in Washington state) and 21 columns. Additionally, we have added two new columns, one that reflects the year in which the house was built or reformed and one that reflects the distance from the center (the most expensive area).
